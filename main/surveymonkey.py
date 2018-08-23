@@ -5,7 +5,6 @@ from pages.survey_operations import EditElements
 from pages.surveyquestions import SurveyQuestionPage
 from utilities.sendkeysconfig import*
 
-
 class SurveyMonkeyWebsite():
 
     def __init__(self):
@@ -17,8 +16,8 @@ class SurveyMonkeyWebsite():
         lp.login(username,pass_word)
         cs = CreateSurvey(self.driver)
         cs.create_survey(first_survey_title)
-        # edit_survey = EditElements(self.driver)
-        # edit_survey.survey_operations(new_survey_title,new_page_title)
+        edit_survey = EditElements(self.driver)
+        edit_survey.survey_operations(new_survey_title,new_page_title)
 
     def get_survey_questions(self):
         survey_questions = SurveyQuestionPage(self.driver)
@@ -35,4 +34,4 @@ class SurveyMonkeyWebsite():
 
 survey_monkey = SurveyMonkeyWebsite()
 survey_monkey.get_survey()
-# survey_monkey.get_survey_questions()
+survey_monkey.get_survey_questions()
