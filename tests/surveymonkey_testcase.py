@@ -6,6 +6,7 @@ from pages.createsurvey import CreateSurvey
 from pages.survey_operations import EditElements
 from pages.surveyquestions import SurveyQuestionPage
 
+
 @pytest.fixture(scope='module')
 def get_driver():
     web_driver = DriverSet()

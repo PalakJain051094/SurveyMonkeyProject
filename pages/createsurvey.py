@@ -27,10 +27,15 @@ class CreateSurvey(BasePage):
     _create_survey_button = "//button[text()='CREATE SURVEY']"
     _popup_Remove = "//div[@class='dialog-btn-bar']//a[contains(text(),'REMOVE')]"
     _survey_body = "create"
+    _from_scratch = "scratch"
 
     # method to click on survey link
     def click_survey_link(self):
         self.element_click(self._create_survey_link, locator_type="xpath")
+
+    #method to click on from scratch
+    def click_from_scratch_link(self):
+        self.element_click(self._from_scratch)
 
     # method to send title
     def send_title(self,first_survey_title):
@@ -54,12 +59,15 @@ class CreateSurvey(BasePage):
 
     # method to create survey
     def create_survey(self,first_survey_title=""):
-        CreateSurvey.click_survey_link(self,)
-        CreateSurvey.send_title(self,first_survey_title)
+        CreateSurvey.click_survey_link(self)
+        if(self.is_element_present(locator=self._from_scratch)):
+            CreateSurvey.click_from_scratch_link(self)
+        CreateSurvey.send_title(self, first_survey_title)
         CreateSurvey.send_survey_category(self)
         CreateSurvey.select_option(self)
         CreateSurvey.save_survey(self)
-        CreateSurvey.handle_remove_popuup(self)
+        if(self.is_element_present(locator=self._popup_Remove,locator_type="xpath")):
+            CreateSurvey.handle_remove_popuup(self)
 
     def verify_createsurvey_successful(self):
         self.wait_for_element(locator=self._survey_body, timeout=5,pollFrequency=1)

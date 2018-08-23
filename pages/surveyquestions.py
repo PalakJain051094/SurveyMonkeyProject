@@ -2,6 +2,7 @@ from base.base_page import BasePage
 import time
 from utilities.sendkeysconfig import*
 
+
 class SurveyQuestionPage(BasePage):
 
     def __init__(self, driver):
