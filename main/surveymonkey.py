@@ -4,7 +4,7 @@ from pages.createsurvey import CreateSurvey
 from pages.survey_operations import EditElements
 from pages.surveyquestions import SurveyQuestionPage
 from utilities.sendkeysconfig import*
-
+ # main class
 class SurveyMonkeyWebsite():
 
     def __init__(self):
