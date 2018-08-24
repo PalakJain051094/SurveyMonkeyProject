@@ -13,7 +13,7 @@ class LoginPage(BasePage):
     _login_button = "//button[@type='submit']"
     _login_success="userAcctTab_MainMenu"
     _login_fail="//div[@id='sign-in']//li[contains(text(),'The username or password you entered is incorrect')]"
-    _logout="//ul[@class='nav-submenu']//a[text()='Sign Out']"
+    _logout="//li[@id='dd-my-account']//a[text()='Sign Out']"
 
     def click_login_link(self):
         self.element_click(self._login_link, locator_type="xpath")
@@ -34,6 +34,10 @@ class LoginPage(BasePage):
         self.clear_field(locator=self._password_field)
         LoginPage.enter_password(self,password)
         LoginPage.click_login_button(self)
+
+    def logout(self):
+        self.element_click(locator=self._login_success)
+        self.element_click(locator=self._logout, locator_type="xpath")
 
     def verify_login_successful(self):
         self.wait_for_element(locator=self._login_success, timeout=5,pollFrequency=1)

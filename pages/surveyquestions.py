@@ -64,7 +64,17 @@ class SurveyQuestionPage(BasePage):
     # question 10
     _question_ten_type = "//ul[@class='add-q-menu-left']//a[text()='Comment Box']"
 
-    _survey_body = "create"
+    #verify questions
+    _text_1="//span[text()='Enter your email']"
+    _text_2 = "//span[text()='How often do you use SurveyMonkey']"
+    _text_3 = "//span[text()='From When are you using SurveyMonkey']"
+    _text_4 = "//span[text()='How will rate the ease of survey creation']"
+    _text_5 = "//span[text()='Did you get meaningful data from survey analysis']"
+    _text_6 = "//span[text()='Check the Features you like about SurveyMonkey?']"
+    _text_7 = "//span[text()='Rate our features.']"
+    _text_8 = "//span[text()='List the features you like most.']"
+    _text_9 = "//span[text()='Will recommend SurveyMonkey to your friends / Colleagues']"
+    _text_10 = "//span[text()='Comments/Feedback']"
 
     # method to save and next question
     def save_and_next(self):
@@ -77,6 +87,7 @@ class SurveyQuestionPage(BasePage):
 
     # method to get question type
     def get_question_type(self):
+        self.wait_for_element(self._question_type)
         self.element_click(self._question_type)
 
     # method to add 1st question
@@ -86,16 +97,17 @@ class SurveyQuestionPage(BasePage):
         self.element_click(self._question_first_type, locator_type="xpath")
         SurveyQuestionPage.save_and_next(self)
 
-
     # method to add 2nd question
     def add_question_two(self, question_no_2=""):
         self.send_keys(question_no_2, self._question_title_box)
         SurveyQuestionPage.get_question_type(self)
+        self.wait_for_element(locator=self._question_two_and_nine_type, locator_type="xpath", pollFrequency=1)
         self.element_click(self._question_two_and_nine_type, locator_type="xpath")
+        self.wait_for_element(self._question_select_choice, pollFrequency=1)
         self.element_click(self._question_select_choice)
+        self.wait_for_element(self._question_two_select_type, locator_type="xpath", pollFrequency=1)
         self.element_click(self._question_two_select_type, locator_type="xpath")
         SurveyQuestionPage.save_and_next(self)
-
 
     # method to add 3rd question
     def add_question_three(self, question_no_3=""):
@@ -190,14 +202,59 @@ class SurveyQuestionPage(BasePage):
 
     # method to add 10th question
     def add_question_ten(self, question_no_10=""):
-        self.send_keys(question_no_9, self._question_title_box)
+        self.send_keys(question_no_10, self._question_title_box)
         SurveyQuestionPage.get_question_type(self)
         self.element_click(self._question_ten_type, locator_type="xpath")
-        self.wait_for_element(locator=self._save_question, locator_type="xpath", timeout=5, pollFrequency=1)
-        time.sleep(5)
-        self.element_click(self._save_question, locator_type="xpath")
+        # self.wait_for_element(locator=self._save_question, locator_type="xpath", timeout=5, pollFrequency=1)
+        # time.sleep(5)
+        # self.element_click(self._save_question, locator_type="xpath")
+        SurveyQuestionPage.save_and_next(self)
 
-    def verify_question(self):
-        self.wait_for_element(locator=self._survey_body, timeout=5, pollFrequency=1)
-        result = self.is_element_present(locator=self._survey_body)
+    def verify_question_one(self):
+        self.wait_for_element(locator=self._text_1,locator_type="xpath", timeout=5, pollFrequency=1)
+        result = self.is_element_present(locator=self._text_1,locator_type="xpath")
+        return result
+
+    def verify_question_two(self):
+        self.wait_for_element(locator=self._text_2,locator_type="xpath", timeout=5, pollFrequency=1)
+        result = self.is_element_present(locator=self._text_2,locator_type="xpath")
+        return result
+
+    def verify_question_three(self):
+        self.wait_for_element(locator=self._text_3,locator_type="xpath", timeout=5, pollFrequency=1)
+        result = self.is_element_present(locator=self._text_3,locator_type="xpath")
+        return result
+
+    def verify_question_four(self):
+        self.wait_for_element(locator=self._text_4,locator_type="xpath", timeout=5, pollFrequency=1)
+        result = self.is_element_present(locator=self._text_4,locator_type="xpath")
+        return result
+
+    def verify_question_five(self):
+        self.wait_for_element(locator=self._text_5,locator_type="xpath", timeout=5, pollFrequency=1)
+        result = self.is_element_present(locator=self._text_5,locator_type="xpath")
+        return result
+
+    def verify_question_six(self):
+        self.wait_for_element(locator=self._text_6,locator_type="xpath", timeout=5, pollFrequency=1)
+        result = self.is_element_present(locator=self._text_6,locator_type="xpath")
+        return result
+    def verify_question_seven(self):
+        self.wait_for_element(locator=self._text_7,locator_type="xpath", timeout=5, pollFrequency=1)
+        result = self.is_element_present(locator=self._text_7,locator_type="xpath")
+        return result
+
+    def verify_question_eight(self):
+        self.wait_for_element(locator=self._text_8,locator_type="xpath", timeout=5, pollFrequency=1)
+        result = self.is_element_present(locator=self._text_8,locator_type="xpath")
+        return result
+
+    def verify_question_nine(self):
+        self.wait_for_element(locator=self._text_9,locator_type="xpath", timeout=5, pollFrequency=1)
+        result = self.is_element_present(locator=self._text_9,locator_type="xpath")
+        return result
+
+    def verify_question_ten(self):
+        self.wait_for_element(locator=self._text_10,locator_type="xpath", timeout=5, pollFrequency=1)
+        result = self.is_element_present(locator=self._text_10,locator_type="xpath")
         return result

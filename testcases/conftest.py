@@ -12,11 +12,8 @@ def get_driver():
     lp = LoginPage(driver)
     lp.login(username, pass_word)
     print("end of get_driver")
-    return driver
-    # if request.cls is not None:
-    #     request.cls.driver = driver
-    # yield driver
-    # driver.quit()
+    yield driver
+    driver.quit()
 
 @pytest.yield_fixture(scope="class")
 def get_survey():
@@ -28,11 +25,8 @@ def get_survey():
     cs=CreateSurvey(driver)
     cs.create_survey(first_survey_title)
     print("end of get_survey")
-    return driver
-    # if request.cls is not None:
-    #     request.cls.driver = driver
-    # yield driver
-    # driver.quit()
+    yield driver
+    driver.quit()
 
 
 
