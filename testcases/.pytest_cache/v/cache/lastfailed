@@ -1,0 +1,16 @@
+{
+  "test_login_page.py::TestLogin::test_invalidLogin_1___jain_palak____palak0505____palakjain__": true,
+  "test_login_page.py::TestLogin::test_invalidLogin_1___jain_palak____palak0505____palakjain____Indian_Politics____Indian_Politics_System____View_On_Indian_Politics__": true,
+  "test_login_page.py::TestLogin::test_invalidLogin_2___": true,
+  "test_login_page.py::TestLogin::test_invalidLogin_3___": true,
+  "test_login_page.py::TestLogin::test_validLogin_1___jain_palak____palak0505____palakjain__": true,
+  "test_login_page.py::TestLogin::test_validLogin_1___jain_palak____palak0505____palakjain____Indian_Politics____Indian_Politics_System____View_On_Indian_Politics__": true,
+  "test_login_page.py::TestLogin::test_validLogin_2___": true,
+  "test_login_page.py::TestLogin::test_validLogin_3___": true,
+  "test_question.py": true,
+  "test_question.py::TestQuestion::test_question_3": true,
+  "test_question.py::TestQuestion::test_question_six": true,
+  "test_question.py::TestQuestion::test_question_ten": true,
+  "test_question.py::TestQuestion::test_question_three": true,
+  "test_question.py::TestQuestion::test_question_two": true
+}
