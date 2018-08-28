@@ -15,6 +15,7 @@ class EditElements(BasePage):
     _page_title = "pageTitle"
     _save_pagetitle = " //form[@id='pageTitleForm']//a[text()='SAVE'] "
     _survey_body = "create"
+    _design_survey = "//a[text()='DESIGN SURVEY']"
 
     # method to click on survey_title_link
     def survey_title_link(self):
@@ -63,6 +64,6 @@ class EditElements(BasePage):
         EditElements.edit_page_title(self,new_page_title)
 
     def verify_surveyoperation_successful(self):
-        self.wait_for_element(locator=self._survey_body, timeout=5,pollFrequency=1)
-        result = self.is_element_present(locator=self._survey_body)
+        self.wait_for_element(locator=self._design_survey, locator_type="xpath")
+        result = self.is_element_present(locator=self._design_survey, locator_type="xpath")
         return result

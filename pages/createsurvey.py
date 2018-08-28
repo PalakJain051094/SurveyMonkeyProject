@@ -28,6 +28,7 @@ class CreateSurvey(BasePage):
     _popup_Remove = "//div[@class='dialog-btn-bar']//a[contains(text(),'REMOVE')]"
     _survey_body = "create"
     _from_scratch = "scratch"
+    _design_survey="//a[text()='DESIGN SURVEY']"
 
     # method to click on survey link
     def click_survey_link(self):
@@ -70,6 +71,6 @@ class CreateSurvey(BasePage):
             CreateSurvey.handle_remove_popuup(self)
 
     def verify_createsurvey_successful(self):
-        self.wait_for_element(locator=self._survey_body, timeout=5,pollFrequency=1)
-        result = self.is_element_present(locator=self._survey_body)
+        self.wait_for_element(locator=self._design_survey,locator_type="xpath")
+        result = self.is_element_present(locator=self._design_survey,locator_type="xpath")
         return result

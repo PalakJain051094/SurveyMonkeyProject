@@ -12,5 +12,16 @@
   "test_question.py::TestQuestion::test_question_six": true,
   "test_question.py::TestQuestion::test_question_ten": true,
   "test_question.py::TestQuestion::test_question_three": true,
-  "test_question.py::TestQuestion::test_question_two": true
+  "test_question.py::TestQuestion::test_question_two": true,
+  "testsuite.py::TestQuestion::test_question_1": true,
+  "testsuite.py::TestQuestion::test_question_10": true,
+  "testsuite.py::TestQuestion::test_question_2": true,
+  "testsuite.py::TestQuestion::test_question_3": true,
+  "testsuite.py::TestQuestion::test_question_4": true,
+  "testsuite.py::TestQuestion::test_question_5": true,
+  "testsuite.py::TestQuestion::test_question_6": true,
+  "testsuite.py::TestQuestion::test_question_7": true,
+  "testsuite.py::TestQuestion::test_question_8": true,
+  "testsuite.py::TestQuestion::test_question_9": true,
+  "testsuite.py::TestSurveyOperation::test_survey_operation": true
 }

@@ -1,1 +1,4 @@
-[]
+[
+  "test_login.py::TestLogin::test_invalidLogin",
+  "test_login.py::TestLogin::test_validLogin"
+]

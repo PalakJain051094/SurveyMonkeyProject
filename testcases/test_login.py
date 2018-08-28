@@ -15,7 +15,7 @@ class TestLogin(unittest.TestCase):
 
     @pytest.mark.run(order=1)
     def test_invalidLogin(self):
-        print("test_invalidLogin started")
+        self.log.info("test_invalidLogin started")
         self.lp.logout()
         self.lp.login(username, invalid_password)
         result = self.lp.verify_login_failed()
@@ -23,7 +23,7 @@ class TestLogin(unittest.TestCase):
 
     @pytest.mark.run(order=2)
     def test_validLogin(self):
-        print("test_validLogin started")
+        self.log.info("test_validLogin started")
         self.lp.login(username, pass_word)
         result = self.lp.verify_login_successful()
         assert result == True

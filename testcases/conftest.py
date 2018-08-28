@@ -17,11 +17,12 @@ def get_driver():
 
 @pytest.yield_fixture(scope="class")
 def get_survey():
-    print("in get_survey")
-    web_driver = DriverSet()
-    driver = web_driver.get_web_driver_instance()
-    lp = LoginPage(driver)
-    lp.login(username, pass_word)
+    # print("in get_survey")
+    # web_driver = DriverSet()
+    # driver = web_driver.get_web_driver_instance()
+    # lp = LoginPage(driver)
+    # lp.login(username, pass_word)
+    driver=get_driver()
     cs=CreateSurvey(driver)
     cs.create_survey(first_survey_title)
     print("end of get_survey")

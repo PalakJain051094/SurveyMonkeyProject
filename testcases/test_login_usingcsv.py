@@ -21,7 +21,7 @@ class TestLogin(unittest.TestCase):
     @data(*getCSVData("D:/Python_workspace/AutomationAss/logindata.csv"))
     @unpack
     def test_validLogin(self,username, pass_word):
-        print("test_validLogin started")
+        self.log.info("test_validLogin started")
         self.lp.logout()
         self.lp.login(username, pass_word)
         result = self.lp.verify_login_successful()

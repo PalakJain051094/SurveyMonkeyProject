@@ -210,6 +210,7 @@ class SurveyQuestionPage(BasePage):
         # self.element_click(self._save_question, locator_type="xpath")
         SurveyQuestionPage.save_and_next(self)
 
+    # success of questions(verification)
     def verify_question_one(self):
         self.wait_for_element(locator=self._text_1,locator_type="xpath", timeout=5, pollFrequency=1)
         result = self.is_element_present(locator=self._text_1,locator_type="xpath")
