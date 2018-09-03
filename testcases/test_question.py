@@ -2,7 +2,7 @@ import pytest
 import unittest
 from pages.surveyquestions import SurveyQuestionPage
 from utilities.sendkeysconfig import *
-from utilities.custom_logger import*
+from utilities.custom_logger import *
 import logging
 
 
@@ -11,7 +11,7 @@ class TestQuestion(unittest.TestCase):
     log = customLogger(logging.DEBUG)
 
     @pytest.fixture(autouse=True)
-    def class_level_setup(self,get_survey):
+    def class_level_setup(self, get_survey):
         self.survey_questions = SurveyQuestionPage(get_survey)
 
     @pytest.mark.run(order=1)
@@ -21,7 +21,7 @@ class TestQuestion(unittest.TestCase):
         result = self.survey_questions.verify_question_one()
         self.log.info("Result: " + str(result))
         assert result == True
-    
+
     @pytest.mark.run(order=2)
     def test_question_2(self):
         self.log.info("test_question_2 started")
@@ -70,7 +70,7 @@ class TestQuestion(unittest.TestCase):
         self.log.info("Result: " + str(result))
         assert result == True
 
-    @pytest.mark.run(order=8)
+    @pytest.mark.run(before='test_question_9')
     def test_question_8(self):
         self.log.info("test_question_8 started")
         self.survey_questions.add_question_eight(question_no_8)
@@ -86,8 +86,8 @@ class TestQuestion(unittest.TestCase):
         self.log.info("Result: " + str(result))
         assert result == True
 
-    @pytest.mark.run(order=10)
-    def test_question_10(self):
+    @pytest.mark.run(after='test_question_9')
+    def test_question_ten(self):
         self.log.info("test_question_10 started")
         self.survey_questions.add_question_ten(question_no_10)
         result = self.survey_questions.verify_question_ten()

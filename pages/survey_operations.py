@@ -8,18 +8,18 @@ class EditElements(BasePage):
         super().__init__(driver)
         self.driver = driver
 
-    _survey_title = "//span[@class='title-text']"
+    _survey_title = "//table[@role='presentation']//span[@class='title-text']"
     _survey_title_box = "surveyTitle"
     _save_new_survey_title = "//form[@id='surveyTitleForm']//a[text()='SAVE']"
     _pagetitle_edit = "//span[text()='PAGE TITLE']"
     _page_title = "pageTitle"
     _save_pagetitle = " //form[@id='pageTitleForm']//a[text()='SAVE'] "
-    _survey_body = "create"
-    _design_survey = "//a[text()='DESIGN SURVEY']"
+    _survey_title_verify="//div[@id='livePreview']//div[@class='survey-title-table-wrapper']"
+    _page_title_verify="//div[@id='livePreview']//span[@class='page-title user-generated']"
 
     # method to click on survey_title_link
     def survey_title_link(self):
-        self.wait_for_element(locator=self._survey_title, locator_type="xpath", pollFrequency=1)
+        self.wait_for_element(locator=self._survey_title, locator_type="xpath")
         self.element_click(self._survey_title, locator_type="xpath")
 
     # method to send title
@@ -34,7 +34,7 @@ class EditElements(BasePage):
         self.element_click(self._save_new_survey_title, locator_type="xpath")
 
     #method to edit survey title
-    def edit_survey_title(self,new_survey_title):
+    def edit_survey_title(self,new_survey_title=""):
         EditElements.survey_title_link(self)
         EditElements.send_survey_title(self,new_survey_title)
         EditElements.save_survey(self)
@@ -53,7 +53,7 @@ class EditElements(BasePage):
         self.element_click(self._save_pagetitle, locator_type="xpath")
 
     # method to edit PAGE title
-    def edit_page_title(self,new_page_title):
+    def edit_page_title(self,new_page_title=""):
         EditElements.page_title_link(self)
         EditElements.send_page_title(self, new_page_title)
         EditElements.save_page_title(self)
@@ -63,7 +63,12 @@ class EditElements(BasePage):
         EditElements.edit_survey_title(self,new_survey_title)
         EditElements.edit_page_title(self,new_page_title)
 
-    def verify_surveyoperation_successful(self):
-        self.wait_for_element(locator=self._design_survey, locator_type="xpath")
-        result = self.is_element_present(locator=self._design_survey, locator_type="xpath")
+    def verify_survey_title(self):
+        self.wait_for_element(locator=self._survey_title_verify, locator_type="xpath")
+        result = self.is_element_present(locator=self._survey_title_verify, locator_type="xpath")
+        return result
+
+    def verify_page_title(self):
+        self.wait_for_element(locator=self._page_title_verify, locator_type="xpath")
+        result = self.is_element_present(locator=self._page_title_verify, locator_type="xpath")
         return result

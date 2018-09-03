@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import *
 from utilities.custom_logger import*
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class SeleniumDriver():
@@ -123,3 +124,38 @@ class SeleniumDriver():
         except:
             self.log.info("Element not found")
             return False
+
+    def web_scroll(self, direction="up"):
+        """
+        NEW METHOD
+        """
+        if direction == "up":
+            # Scroll Up
+            self.driver.execute_script("window.scrollBy(0, -1000);")
+
+        if direction == "down":
+            # Scroll Down
+            self.driver.execute_script("window.scrollBy(0, 1000);")
+
+    def drag_drop(self,source_locator,destination_locator,locator_type="id"):
+        source_element = None
+        destination_element = None
+        action = None
+        try:
+            if source_locator:
+                source_element = self.get_element(source_locator, locator_type)
+                self.log.info("source_element is found "+source_locator+"with locator type"+ locator_type)
+            if  destination_locator:
+                destination_element = self.get_element(destination_locator, locator_type)
+                self.log.info("destination element is found " + destination_locator + "with locator type" + locator_type)
+
+            actionChains = ActionChains(self.driver)
+            self.log.info(actionChains)
+            action = actionChains.drag_and_drop(source_element, destination_element).perform()
+            self.log.info(action)
+            self.log.info("drag and drop done")
+
+        except:
+            self.log.info("Cannot perfrom drag nad drop " + source_locator +
+                  " locatorType: " + locator_type)
+            print_stack()

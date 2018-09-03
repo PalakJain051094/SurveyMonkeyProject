@@ -15,9 +15,17 @@ class TestSurveyOperation(unittest.TestCase):
         self.operation_survey=EditElements(get_survey)
 
     @pytest.mark.run(order=1)
-    def test_survey_operation(self):
-        self.log.info("test_survey_operation started")
-        self.operation_survey.survey_operations(new_survey_title, new_page_title)
-        result = self.operation_survey.verify_surveyoperation_successful()
+    def test_surveytitle(self):
+        self.log.info("test_survey_title started")
+        self.operation_survey.edit_survey_title(new_survey_title)
+        result = self.operation_survey.verify_survey_title()
+        self.log.info("Result: " + str(result))
+        assert result == True
+
+    @pytest.mark.run(order=2)
+    def test_pagetitle(self):
+        self.log.info("test_page_title started")
+        self.operation_survey.edit_page_title(new_page_title)
+        result = self.operation_survey.verify_page_title()
         self.log.info("Result: " + str(result))
         assert result == True

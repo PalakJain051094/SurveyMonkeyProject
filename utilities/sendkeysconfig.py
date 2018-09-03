@@ -27,6 +27,34 @@ multiple_textbox_label_1="1"
 multiple_textbox_label_2="2"
 multiple_textbox_label_3="3"
 
+# type of questions
+# 1st question type
+type_singletextbox="Single Textbox"
+
+# 2nd and 9th question type
+type_multiplechoice="Multiple Choice"
+
+# 3rd question type
+type_datetime="Date / Time"
+
+# 4th question type
+type_starrating="Star Rating"
+
+# 5th question type
+type_dropdown="Dropdown"
+
+# 6th question type
+type_checkboxes="Checkboxes"
+
+# 7th question type
+type_matrix="Matrix / Rating Scale"
+
+# 8th question type
+type_multipletextbox="Multiple Textboxes"
+
+# 10th question type
+type_commentbox="Comment Box"
+
 #matrix rating
 one="Very Good"
 two="Good"
